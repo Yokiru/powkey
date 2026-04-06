@@ -1,0 +1,1 @@
+export const ADMIN_WHATSAPP = "62895360148909";
