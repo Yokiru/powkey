@@ -65,6 +65,18 @@ a {
   gap: 8px;
 }
 
+.storefront__tier-badge {
+  width: fit-content;
+  padding: 2px 8px;
+  border: 1px solid #1f7a39;
+  background: rgba(31, 122, 57, 0.08);
+  color: #1f7a39;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 .storefront__topbar {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 72px;

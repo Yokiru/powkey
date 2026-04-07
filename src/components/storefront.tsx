@@ -61,6 +61,12 @@ export function StorefrontContent({ products, buyerTier }: StorefrontProps) {
 
   return (
     <section className="storefront">
+      {buyerTier === "reseller" ? (
+        <div className="storefront__tier-badge" aria-label="Mode reseller">
+          Reseller
+        </div>
+      ) : null}
+
       <div className="storefront__topbar">
         <label className="storefront__search" aria-label="Cari produk">
           <input
