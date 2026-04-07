@@ -7,6 +7,7 @@ export type ProductVariant = {
 export type Product = {
   id: string;
   name: string;
+  description: string;
   requireEmail: boolean;
   variants: ProductVariant[];
 };
@@ -15,6 +16,7 @@ export const defaultProducts: Product[] = [
   {
     id: "youtube-premium-music",
     name: "YOUTUBE PREMIUM + MUSIC",
+    description: "Akun premium digital untuk akses YouTube tanpa iklan dan YouTube Music.",
     requireEmail: false,
     variants: [
       {
@@ -42,6 +44,7 @@ export const defaultProducts: Product[] = [
   {
     id: "spotify-premium",
     name: "SPOTIFY PREMIUM",
+    description: "Paket premium Spotify digital dengan beberapa pilihan plan dan durasi.",
     requireEmail: false,
     variants: [
       {
@@ -64,6 +67,7 @@ export const defaultProducts: Product[] = [
   {
     id: "canva-pro",
     name: "CANVA PRO",
+    description: "Akses Canva Pro digital untuk kebutuhan desain harian dan pekerjaan kreatif.",
     requireEmail: false,
     variants: [
       {

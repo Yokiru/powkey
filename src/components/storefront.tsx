@@ -39,6 +39,7 @@ export function StorefrontContent({ products, buyerTier }: StorefrontProps) {
     }
 
     return [product.name, ...product.variants.map((variant) => variant.label)]
+      .concat(product.description ? [product.description] : [])
       .join(" ")
       .toLowerCase()
       .includes(keyword);
@@ -136,6 +137,10 @@ export function StorefrontContent({ products, buyerTier }: StorefrontProps) {
                   aria-hidden={!isOpen}
                 >
                   <div className="storefront__details-inner">
+                    {product.description ? (
+                      <p className="storefront__description">{product.description}</p>
+                    ) : null}
+
                     <div className="storefront__variants">
                       <span className="storefront__variants-label">Paket</span>
                       <div className="storefront__variant-list">

@@ -12,6 +12,7 @@ export type AdminProductRecord = {
   id: string;
   slug: string;
   name: string;
+  description: string;
   requireEmail: boolean;
   isActive: boolean;
   variants: AdminProductVariantRecord[];
@@ -26,6 +27,7 @@ export type AdminProductVariantPayload = {
 
 export type AdminProductPayload = {
   name: string;
+  description: string;
   requireEmail: boolean;
   variants: AdminProductVariantPayload[];
 };

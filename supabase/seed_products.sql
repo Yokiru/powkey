@@ -1,11 +1,12 @@
-insert into public.products (slug, name, require_email, is_active)
+insert into public.products (slug, name, description, require_email, is_active)
 values
-  ('youtube-premium-music', 'YOUTUBE PREMIUM + MUSIC', false, true),
-  ('spotify-premium', 'SPOTIFY PREMIUM', false, true),
-  ('canva-pro', 'CANVA PRO', false, true)
+  ('youtube-premium-music', 'YOUTUBE PREMIUM + MUSIC', 'Akun premium digital untuk akses YouTube tanpa iklan dan YouTube Music.', false, true),
+  ('spotify-premium', 'SPOTIFY PREMIUM', 'Paket premium Spotify digital dengan beberapa pilihan plan dan durasi.', false, true),
+  ('canva-pro', 'CANVA PRO', 'Akses Canva Pro digital untuk kebutuhan desain harian dan pekerjaan kreatif.', false, true)
 on conflict (slug) do update
 set
   name = excluded.name,
+  description = excluded.description,
   require_email = excluded.require_email,
   is_active = excluded.is_active;
 

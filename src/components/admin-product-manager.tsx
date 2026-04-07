@@ -16,6 +16,7 @@ type EditableVariant = {
 
 type ProductDraft = {
   name: string;
+  description: string;
   requireEmail: boolean;
   variants: EditableVariant[];
 };
@@ -266,6 +267,21 @@ export function AdminProductManager({
           </div>
         </div>
 
+        <label className="admin-form__field admin-form__field--full">
+          <span>Keterangan Produk</span>
+          <textarea
+            rows={3}
+            value={newDraft.description}
+            onChange={(event) =>
+              setNewDraft((current) => ({
+                ...current,
+                description: event.target.value
+              }))
+            }
+            placeholder="Keterangan singkat yang akan tampil ke customer"
+          />
+        </label>
+
         <div className="admin-variants">
           <div className="admin-product-builder__header admin-product-builder__header--variants">
             <div>
@@ -427,6 +443,21 @@ export function AdminProductManager({
                         </button>
                       </div>
                     </div>
+
+                    <label className="admin-form__field admin-form__field--full">
+                      <span>Keterangan Produk</span>
+                      <textarea
+                        rows={3}
+                        value={draft.description}
+                        onChange={(event) =>
+                          updateExistingProduct(product, (current) => ({
+                            ...current,
+                            description: event.target.value
+                          }))
+                        }
+                        placeholder="Keterangan singkat yang akan tampil ke customer"
+                      />
+                    </label>
 
                     <div className="admin-variants">
                       <div className="admin-product-builder__header admin-product-builder__header--variants">
@@ -617,6 +648,7 @@ function VariantEditor({
 function createEmptyDraft(): ProductDraft {
   return {
     name: "",
+    description: "",
     requireEmail: false,
     variants: [createEmptyVariant()]
   };
@@ -636,6 +668,7 @@ function createEmptyVariant(): EditableVariant {
 function createDraftFromProduct(product: AdminProductRecord): ProductDraft {
   return {
     name: product.name,
+    description: product.description,
     requireEmail: product.requireEmail,
     variants: product.variants.map((variant) => ({
       id: variant.id,
@@ -675,6 +708,7 @@ function sanitizeDraft(draft: ProductDraft): AdminProductPayload | null {
 
   return {
     name,
+    description: draft.description.trim(),
     requireEmail: draft.requireEmail,
     variants
   };

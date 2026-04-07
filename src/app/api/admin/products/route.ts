@@ -24,6 +24,7 @@ export async function POST(request: Request) {
 
   const body = (await request.json()) as AdminProductPayload;
   const name = String(body.name ?? "").trim();
+  const description = String(body.description ?? "").trim();
   const variants = normalizeVariants(body.variants ?? []);
 
   if (!name || variants.length === 0) {
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
     .insert({
       slug: productSlug,
       name,
+      description: description || null,
       require_email: Boolean(body.requireEmail),
       is_active: true
     })

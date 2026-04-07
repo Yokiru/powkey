@@ -150,6 +150,7 @@ function normalizeProduct(product: Product): Product {
   return {
     id: String(product.id || "").trim(),
     name: String(product.name || "").trim(),
+    description: String(product.description || "").trim(),
     requireEmail: Boolean(product.requireEmail),
     variants: (product.variants ?? []).map((variant) => {
       const id = String(variant.id || "").trim();

@@ -10,6 +10,7 @@ type ProductRow = {
   id: string;
   slug: string;
   name: string;
+  description: string | null;
   require_email: boolean;
   is_active: boolean;
   product_variants: {
@@ -74,6 +75,7 @@ export async function getProductsByTier(
         id,
         slug,
         name,
+        description,
         require_email,
         is_active,
         product_variants (
@@ -97,6 +99,7 @@ export async function getProductsByTier(
   const rows = ((data ?? []) as ProductRow[]).map((product) => ({
     id: product.slug,
     name: product.name,
+    description: product.description ?? "",
     requireEmail: product.require_email,
     variants: (product.product_variants ?? [])
       .filter((variant) => variant.is_active)
@@ -119,6 +122,7 @@ export async function getAdminProducts(supabase: SupabaseClient) {
         id,
         slug,
         name,
+        description,
         require_email,
         is_active,
         product_variants (
@@ -142,6 +146,7 @@ export async function getAdminProducts(supabase: SupabaseClient) {
     id: product.id,
     slug: product.slug,
     name: product.name,
+    description: product.description ?? "",
     requireEmail: product.require_email,
     isActive: product.is_active,
     variants: (product.product_variants ?? [])
@@ -173,6 +178,7 @@ export async function getProductSelectionBySlugs(
         id,
         slug,
         name,
+        description,
         require_email,
         is_active,
         product_variants!inner (
